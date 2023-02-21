@@ -1,0 +1,34 @@
+# ??
+server:
+  port: 8080
+spring:
+  application:
+    # ????
+    name: actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        # ????????
+        include: "*"
+      # ??????? monitor
+      # ????http://localhost:8080/actuator/*
+      # ????http://localhost:8080/sys/*
+      base-path: /sys
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      # ???????? SpringBoot
+      # ?? curl "http://localhost:8080/sys/shutdown" -i -X POST
+      enabled: true
+  # ???????
+  # server:
+  #   port: 8089
+# ????????
+info:
+  app:
+    name: actuator
+    port: 8080
+    version: 1.0.0
+    author: hugqq
