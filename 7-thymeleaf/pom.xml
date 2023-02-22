@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hugqq</groupId>
-    <artifactId>thymeleaf</artifactId>
+    <artifactId>7-thymeleaf</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>7-thymeleaf</name>
     <description>7-thymeleaf</description>

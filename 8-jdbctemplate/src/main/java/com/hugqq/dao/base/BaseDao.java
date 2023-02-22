@@ -135,14 +135,11 @@ public class BaseDao<T, P> {
         String tableName = getTableName(t);
         List<Field> filterField = getField(t, true);
         List<String> columnList = getColumns(filterField);
-
         List<String> columns = columnList.stream().map(s -> " and " + s + " = ? ").collect(Collectors.toList());
-
         String where = StrUtil.join(" ", columns);
         // 构造值
         Object[] values = filterField.stream().map(field -> ReflectUtil.getFieldValue(t, field)).toArray();
-
-        String sql = StrUtil.format("SELECT * FROM {table} where 1=1 {where}", Dict.create().set("table", tableName).set("where", StrUtil.isBlank(where) ? "" : where));
+        String sql = StrUtil.format("SELECT * FROM {table} where 1 = 1 {where}", Dict.create().set("table", tableName).set("where", StrUtil.isBlank(where) ? "" : where));
         log.debug("【执行SQL】SQL：{}", sql);
         log.debug("【执行SQL】参数：{}", JSONUtil.toJsonStr(values));
         List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql, values);

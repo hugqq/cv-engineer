@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hugqq</groupId>
-    <artifactId>properties</artifactId>
+    <artifactId>3-properties</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>3-properties</name>
     <description>3-properties</description>

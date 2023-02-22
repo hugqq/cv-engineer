@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hugqq</groupId>
-    <artifactId>jdbctemplate</artifactId>
+    <artifactId>8-jdbctemplate</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>8-jdbctemplate</name>
     <description>8-jdbctemplate</description>

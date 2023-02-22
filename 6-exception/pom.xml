@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hugqq</groupId>
-    <artifactId>exception</artifactId>
+    <artifactId>6-exception</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>6-exception</name>
     <description>6-exception</description>
