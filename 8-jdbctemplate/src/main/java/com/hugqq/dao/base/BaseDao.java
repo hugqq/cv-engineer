@@ -30,6 +30,8 @@ import java.util.stream.Stream;
  */
 @Slf4j
 public class BaseDao<T, P> {
+
+
     private JdbcTemplate jdbcTemplate;
     private Class<T> clazz;
 

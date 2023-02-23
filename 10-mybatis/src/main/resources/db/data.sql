@@ -10,3 +10,5 @@ INSERT INTO `orm_user_dept`(`id`, `user_id`, `dept_id`, `create_time`, `last_upd
 INSERT INTO `orm_user_dept`(`id`, `user_id`, `dept_id`, `create_time`, `last_update_time`) VALUES (3, 2, 2, now(), now());
 INSERT INTO `orm_user_dept`(`id`, `user_id`, `dept_id`, `create_time`, `last_update_time`) VALUES (4, 2, 3, now(), now());
 INSERT INTO `orm_user_dept`(`id`, `user_id`, `dept_id`, `create_time`, `last_update_time`) VALUES (5, 3, 4, now(), now());
+INSERT INTO `orm_user_dept`(`id`, `user_id`, `dept_id`, `create_time`, `last_update_time`) VALUES (6, 4, 4, now(), now());
+INSERT INTO `orm_user_dept`(`id`, `user_id`, `dept_id`, `create_time`, `last_update_time`) VALUES (7, 5, 1, now(), now());
