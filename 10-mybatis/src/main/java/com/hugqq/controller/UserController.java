@@ -1,6 +1,5 @@
 package com.hugqq.controller;
 
-import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.apifan.common.random.source.PersonInfoSource;
@@ -16,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -52,8 +50,15 @@ public class UserController {
     }
 
     /**
-     * 测试查询所有
+     * 测试查询所有 注解拦截限制
      */
+    @RequestMapping("/selectAll")
+    public ResponseEntity selectAll() {
+        List<OrmUser> userList = ormUserMapper.selectAll();
+        return ResponseEntity.ok(userList);
+    }
+
+
     @RequestMapping("/selectAllUser")
     public ResponseEntity selectAllUser() {
         List<OrmUser> userList = ormUserMapper.selectAllUser();
