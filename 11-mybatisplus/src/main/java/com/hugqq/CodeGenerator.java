@@ -2,12 +2,10 @@ package com.hugqq;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
-import com.baomidou.mybatisplus.generator.FastAutoGenerator;
+import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.querys.MySqlQuery;
-import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.baomidou.mybatisplus.generator.fill.Column;
@@ -16,91 +14,106 @@ import com.baomidou.mybatisplus.generator.keywords.MySqlKeyWordsHandler;
 import com.hugqq.entity.BaseEntity;
 
 import java.util.Collections;
-import java.util.function.Consumer;
 
 public class CodeGenerator {
 
     public static void main(String[] args) {
 
 
-        DataSourceConfig.Builder builder = new DataSourceConfig.Builder("jdbc:mysql://127.0.0.1:3306/demo", "root", "root")
+
+        DataSourceConfig dataSourceConfig = new DataSourceConfig.Builder("jdbc:mysql://127.0.0.1:3306/demo", "root", "root")
                 .dbQuery(new MySqlQuery())
                 .schema("demo")
                 .typeConvert(new MySqlTypeConvert())
-                .keyWordsHandler(new MySqlKeyWordsHandler());
+                .keyWordsHandler(new MySqlKeyWordsHandler()).build();
 
 
-        Consumer<GlobalConfig.Builder> globalConfigConsumer = globalConfig -> {
-            new GlobalConfig.Builder()
-                    .outputDir("C:\\Users\\33047\\IdeaProjects\\cv-engineer\\11-mybatisplus\\src\\main\\java")
-                    .author("hugqq")
-                    .dateType(DateType.TIME_PACK)
-                    .commentDate("yyyy-MM-dd");
-        };
+        GlobalConfig globalConfig = new GlobalConfig.Builder()
+                .disableOpenDir()
+                .fileOverride()
+                .author("hugqq")
+                .outputDir("C:\\Users\\33047\\IdeaProjects\\cv-engineer\\11-mybatisplus\\src\\main\\java").build();
 
-        Consumer<PackageConfig.Builder> packageConfigConsumer = packageConfig -> {
-            new PackageConfig.Builder()
-                    .parent("com.hugqq")
-                    .moduleName("user")
-                    .entity("entity")
-                    .service("service")
-                    .serviceImpl("service.impl")
-                    .mapper("mapper")
-                    .xml("mapper.xml")
-                    .controller("controller")
-                    .pathInfo(Collections.singletonMap(OutputFile.xml, "C:\\Users\\33047\\IdeaProjects\\cv-engineer\\11-mybatisplus\\src\\main\\resources\\mapper"));
-        };
+        PackageConfig packageConfig =
+                new PackageConfig.Builder()
+                        .parent("com.hugqq")
+                        .moduleName("user")
+                        .entity("entity")
+                        .service("service")
+                        .serviceImpl("service.impl")
+                        .mapper("mapper")
+                        .xml("mapper.xml")
+                        .controller("controller")
+                        .pathInfo(Collections.singletonMap(OutputFile.xml, "C:\\Users\\33047\\IdeaProjects\\cv-engineer\\11-mybatisplus\\src\\main\\resources\\mapper")).build();
 
-        Consumer<TemplateConfig.Builder> templateConfigConsumer = templateConfig -> {
-            new TemplateConfig.Builder()
-                    .disable(TemplateType.ENTITY)
-                    .xml("/templates/mapper.xml")
-                    .controller("/templates/controller.java");
-        };
+        TemplateConfig templateConfig =
+                new TemplateConfig.Builder()
+//                    .disable(TemplateType.ENTITY)
+                        .controller("templates/controller.java")
+                        .entity("templates/entity.java")
+                        .service("templates/service.java")
+                        .serviceImpl("templates/serviceImpl.java")
+                        .mapper("templates/mapper.java")
+                        .xml("/templates/mapper.xml")
+                        .controller("/templates/controller.java").build();
+        ;
 
-        Consumer<StrategyConfig.Builder> strategyConfigConsumer = strategyConfig -> {
-            new StrategyConfig.Builder()
-                    .enableCapitalMode()
-                    .enableSkipView()
-                    .disableSqlFilter()
-                    .addTablePrefix("t_")
-
-                    .entityBuilder()
-                    .superClass(BaseEntity.class)
-                    .disableSerialVersionUID()
-                    .enableChainModel()
-                    .enableLombok()
-                    .enableRemoveIsPrefix()
-                    .enableTableFieldAnnotation()
-                    .logicDeleteColumnName("deleted")
-                    .naming(NamingStrategy.underline_to_camel)
-                    .columnNaming(NamingStrategy.underline_to_camel)
-                    .addSuperEntityColumns("id", "created_by", "created_time", "updated_by", "updated_time")
-                    .addIgnoreColumns()
-                    .addTableFills(new Column("create_time", FieldFill.INSERT))
-                    .addTableFills(new Property("updateTime", FieldFill.INSERT_UPDATE))
-                    .idType(IdType.AUTO)
-                    .formatFileName("%sEntity")
-
-                    .controllerBuilder()
-                    .enableHyphenStyle()
-                    .enableRestStyle()
-                    .formatFileName("%sController")
-
-                    .serviceBuilder()
-                    .formatServiceFileName("%sService")
-                    .formatServiceImplFileName("%sServiceImpl");
-        };
+        StrategyConfig strategyConfig =
+                new StrategyConfig.Builder()
+                        .enableCapitalMode()
+                        .enableSkipView()
+                        .disableSqlFilter()
+                        .addInclude("t_user")
+                        .addTablePrefix("t_")
+                        .entityBuilder()
+                        .superClass(BaseEntity.class)
+                        .disableSerialVersionUID()
+                        .enableChainModel()
+                        .enableLombok()
+                        .enableRemoveIsPrefix()
+                        .enableTableFieldAnnotation()
+                        .logicDeleteColumnName("deleted")
+                        .naming(NamingStrategy.underline_to_camel)
+                        .columnNaming(NamingStrategy.underline_to_camel)
+                        .addSuperEntityColumns("id", "create_by", "create_time", "update_by", "update_time", "remark")
+                        .addIgnoreColumns()
+                        .addTableFills(new Column("create_time", FieldFill.INSERT))
+                        .addTableFills(new Property("updateTime", FieldFill.INSERT_UPDATE))
+                        .idType(IdType.AUTO)
+//                        .formatFileName("%sEntity")
+                        .controllerBuilder()
+                        .enableHyphenStyle()
+                        .enableRestStyle()
+                        .formatFileName("%sController")
+                        .serviceBuilder()
+                        .formatServiceFileName("%sService")
+                        .formatServiceImplFileName("%sServiceImpl")
+                        .mapperBuilder()
+                        .enableMapperAnnotation()
+                        .enableBaseResultMap()
+                        .enableBaseColumnList()
+                        .formatMapperFileName("%sMapper")
+                        .formatXmlFileName("%sMapper")
+                        .build();
 
         InjectionConfig injectionConfig = new InjectionConfig.Builder().build();
 
-        FastAutoGenerator.create(builder)
-                .globalConfig(globalConfigConsumer)
-                .packageConfig(packageConfigConsumer)
-                .strategyConfig(strategyConfigConsumer)
-                .templateConfig(templateConfigConsumer)
-                .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
-                .execute();
+
+        AutoGenerator autoGenerator = new AutoGenerator(dataSourceConfig);
+        autoGenerator.strategy(strategyConfig);
+        autoGenerator.packageInfo(packageConfig);
+        autoGenerator.global(globalConfig);
+        autoGenerator.template(templateConfig);
+        autoGenerator.injection(injectionConfig);
+        autoGenerator.execute(new FreemarkerTemplateEngine());
+
+//        FastAutoGenerator.create(builder)
+//                .globalConfig(globalConfigConsumer)
+//                .packageConfig(packageConfigConsumer)
+//                .strategyConfig(strategyConfigConsumer)
+//                .templateConfig(templateConfigConsumer)
+//                .templateEngine(new FreemarkerTemplateEngine())
+//                .execute();
     }
 }
 

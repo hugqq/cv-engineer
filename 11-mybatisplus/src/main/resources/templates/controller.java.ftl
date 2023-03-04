@@ -63,7 +63,7 @@ public class ${table.controllerName}  {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity del(String id, HttpServletRequest request){
+    public ResponseEntity del(@PathVariable String id, HttpServletRequest request){
         return ResponseEntity.ok(${table.serviceName?uncap_first}.removeById(id));
     }
 

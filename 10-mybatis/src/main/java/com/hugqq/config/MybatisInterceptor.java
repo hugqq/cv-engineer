@@ -43,10 +43,13 @@ public class MybatisInterceptor implements Interceptor {
         }
 
         if (SqlCommandType.INSERT.equals(mappedStatement.getSqlCommandType())) {
+            log.info("拦截到当前请求方法为 ---> {}", "INSERT");
         }
 
         if (SqlCommandType.UPDATE.equals(mappedStatement.getSqlCommandType())) {
+            log.info("拦截到当前请求方法为 ---> {}", "UPDATE");
         }
+
         //id为执行的mapper方法的全路径名
         String id = mappedStatement.getId();
         log.info("拦截到当前请求方法的全路径名为 ---> {}", id);

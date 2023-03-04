@@ -17,10 +17,6 @@ import java.util.Map;
  * <p>
  * 测试 Controller
  * </p>
- *
- *
- * @author chen qi
- *
  */
 @Slf4j
 @RestController

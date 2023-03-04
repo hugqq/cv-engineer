@@ -31,19 +31,10 @@ import java.util.Objects;
 @Slf4j
 public class LogAspect {
 
-    /**
-     * 配置织入点
-     */
-    @Pointcut("@annotation(com.hugqq.annos.Log)")
-    public void logPointCut() {
-    }
-
-
     @SneakyThrows
-    @Around(value = "logPointCut()")
-    public Object doAfter(ProceedingJoinPoint joinPoint) {
+    @Around(value = "@annotation(methodAnnotationALog)")
+    public Object doAfter(ProceedingJoinPoint joinPoint,Log methodAnnotationALog) {
         // 方法注解
-        Log methodAnnotationALog = getMethodAnnotationLog(joinPoint);
         if (methodAnnotationALog == null) {
             return null;
         }
@@ -76,30 +67,6 @@ public class LogAspect {
                 .os(userAgent.getOperatingSystem().toString()).build();
         log.info("注解拦截 : {}", JSONUtil.toJsonStr(l));
         return result;
-    }
-
-    /**
-     * 获取Log注解
-     */
-    private Log getMethodAnnotationLog(ProceedingJoinPoint pjp) {
-        Signature signature = pjp.getSignature();
-        String methodName = signature.getName();
-        Object[] args = pjp.getArgs();
-        String targetClassName = pjp.getTarget().getClass().getName();
-        try {
-            Class<?> clazz = Class.forName(targetClassName);
-            Method[] methods = clazz.getMethods();
-            for (Method method : methods) {
-                if (methodName.equals(method.getName())) {
-                    if (args.length == method.getParameterCount()) {
-                        return method.getAnnotation(Log.class);
-                    }
-                }
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
 
