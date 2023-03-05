@@ -1,0 +1,12 @@
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+    <kbase name="kabse" packages="rules" default="false">
+        <ksession name="ksession" default="false" type="stateful">
+            <consoleLogger/>
+            <listeners>
+                <ruleRuntimeEventListener type="org.kie.api.event.rule.DebugRuleRuntimeEventListener"/>
+                <processEventListener type="org.drools.core.event.DebugProcessEventListener"/>
+                <agendaEventListener type="org.drools.core.event.DebugAgendaEventListener"/>
+            </listeners>
+        </ksession>
+    </kbase>
+</kmodule>

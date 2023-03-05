@@ -1,0 +1,28 @@
+package rules
+
+import com.hugqq.entity.Person;
+
+rule "rule0"
+    when
+        eval(true)
+    then
+        System.out.println("hello drools");
+end
+
+// 可以玩游戏
+rule "rule1"
+    when
+        $person: Person( age >= 18)
+    then
+        $person.setPlayGame(true);
+        System.out.println("触发规则:" + drools.getRule().getName());
+end
+
+// 不可以玩游戏
+rule "rule2"
+    when
+        $person: Person( age < 18)
+    then
+        $person.setPlayGame(false);
+        System.out.println("触发规则:" + drools.getRule().getName());
+end
