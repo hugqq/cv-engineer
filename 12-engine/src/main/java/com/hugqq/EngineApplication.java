@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpelApplication {
+public class EngineApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpelApplication.class, args);
+        SpringApplication.run(EngineApplication.class, args);
     }
 
 }

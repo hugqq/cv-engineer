@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hugqq</groupId>
-    <artifactId>spel</artifactId>
+    <artifactId>12-engine</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>12-spel</name>
-    <description>12-spel</description>
+    <name>12-engine</name>
+    <description>12-engine</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -32,6 +32,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-spring</artifactId>
+            <version>7.57.0.Final</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.projectlombok</groupId>
