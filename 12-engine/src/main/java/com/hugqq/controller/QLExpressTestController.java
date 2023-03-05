@@ -1,17 +1,13 @@
 package com.hugqq.controller;
 
 import com.hugqq.entity.Person;
-import com.hugqq.service.QLExpressTestService;
 import com.hugqq.utils.QlExpressUtil;
 import com.ql.util.express.DefaultContext;
-import com.ql.util.express.ExpressRunner;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
 
 @RestController
 @Slf4j
