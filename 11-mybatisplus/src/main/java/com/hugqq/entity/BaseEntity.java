@@ -16,7 +16,7 @@ import java.util.Map;
  * 数据Entity类
  */
 @Data
-public abstract class BaseEntity{
+public abstract class BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -60,7 +60,6 @@ public abstract class BaseEntity{
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Date updateTime;
-
 
 
     /**

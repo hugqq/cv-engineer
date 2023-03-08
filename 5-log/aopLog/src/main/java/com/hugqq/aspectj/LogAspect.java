@@ -11,14 +11,14 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
@@ -33,7 +33,7 @@ public class LogAspect {
 
     @SneakyThrows
     @Around(value = "@annotation(methodAnnotationALog)")
-    public Object doAfter(ProceedingJoinPoint joinPoint,Log methodAnnotationALog) {
+    public Object doAfter(ProceedingJoinPoint joinPoint, Log methodAnnotationALog) {
         // 方法注解
         if (methodAnnotationALog == null) {
             return null;

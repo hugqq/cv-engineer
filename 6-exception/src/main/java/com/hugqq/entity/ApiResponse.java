@@ -8,9 +8,6 @@ import lombok.Data;
  * <p>
  * 通用的 API 接口封装
  * </p>
- *
- *
- *
  */
 @Data
 public class ApiResponse {

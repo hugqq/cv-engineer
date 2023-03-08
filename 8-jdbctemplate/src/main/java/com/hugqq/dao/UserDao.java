@@ -12,9 +12,6 @@ import java.util.List;
  * <p>
  * User Dao
  * </p>
- *
- *
- *
  */
 @Repository
 public class UserDao extends BaseDao<User, Long> {

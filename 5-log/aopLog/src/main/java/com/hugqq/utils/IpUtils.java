@@ -1,7 +1,5 @@
 package com.hugqq.utils;
 
-import lombok.extern.slf4j.Slf4j;
-
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -37,7 +35,7 @@ public class IpUtils {
         if (ip.contains(comma)) {
             ip = ip.split(",")[0];
         }
-        if (localhost1.equals(ip)||localhost2.equals(ip)) {
+        if (localhost1.equals(ip) || localhost2.equals(ip)) {
             // 获取本机真正的ip地址
             try {
                 ip = InetAddress.getLocalHost().getHostAddress();

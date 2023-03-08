@@ -13,9 +13,6 @@ import java.util.Date;
  * <p>
  * 用户实体类
  * </p>
- *
- *
- *
  */
 @Data
 @Table(name = "orm_user")

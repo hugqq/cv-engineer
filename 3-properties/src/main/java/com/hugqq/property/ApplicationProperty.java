@@ -8,9 +8,6 @@ import org.springframework.stereotype.Component;
  * <p>
  * 项目配置
  * </p>
- *
- *
- *
  */
 @Data
 @Component

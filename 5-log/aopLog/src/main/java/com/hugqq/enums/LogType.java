@@ -1,7 +1,6 @@
 package com.hugqq.enums;
 
-public enum LogType
-{
+public enum LogType {
     /**
      * 新增
      */

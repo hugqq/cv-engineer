@@ -60,9 +60,9 @@ public class TestLogTrackController {
             }
         });
         try {
-            int a =  1/0;
+            int a = 1 / 0;
         } catch (ArithmeticException e) {
-            logger.error("ces6  -----------   {}",e.getMessage());
+            logger.error("ces6  -----------   {}", e.getMessage());
         }
     }
 }

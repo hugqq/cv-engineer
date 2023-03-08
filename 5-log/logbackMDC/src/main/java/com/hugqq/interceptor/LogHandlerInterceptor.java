@@ -3,13 +3,13 @@ package com.hugqq.interceptor;
 import cn.hutool.core.util.IdUtil;
 
 
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
+
 @Slf4j
 public class LogHandlerInterceptor implements HandlerInterceptor {
     private static final ThreadLocal<String> TRACK_THREAD_LOCAL = new ThreadLocal<>();

@@ -26,10 +26,10 @@ import java.util.*;
 @RestController
 @RequestMapping("user")
 @Slf4j
-public class UserController  {
+public class UserController {
 
     @Autowired
-    private  UserService userService;
+    private UserService userService;
 
     @DS("master")
     @EventListener
@@ -69,7 +69,7 @@ public class UserController  {
     }
 
     @GetMapping("list")
-    public ResponseEntity list(User user, HttpServletRequest request){
+    public ResponseEntity list(User user, HttpServletRequest request) {
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<User>();
         List<User> list = userService.list(lambdaQueryWrapper);
         return ResponseEntity.ok(list);
@@ -77,16 +77,16 @@ public class UserController  {
 
     @GetMapping("page")
     public ResponseEntity pageList(User user,
-            @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
-            @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
-            HttpServletRequest request){
+                                   @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+                                   @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
+                                   HttpServletRequest request) {
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         Page<User> page = userService.page(new Page<User>(pageNo, pageSize), lambdaQueryWrapper);
         return ResponseEntity.ok(page);
     }
 
     @GetMapping("getOne")
-    public ResponseEntity getOne(User user, HttpServletRequest request){
+    public ResponseEntity getOne(User user, HttpServletRequest request) {
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<User>();
         User one = userService.getOne(lambdaQueryWrapper);
         return ResponseEntity.ok(one);
@@ -99,12 +99,12 @@ public class UserController  {
     }
 
     @PostMapping("saveOrUpdate")
-    public ResponseEntity saveOrUpdate(User user, HttpServletRequest request){
+    public ResponseEntity saveOrUpdate(User user, HttpServletRequest request) {
         return ResponseEntity.ok(userService.saveOrUpdate(user));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity del(@PathVariable String id, HttpServletRequest request){
+    public ResponseEntity del(@PathVariable String id, HttpServletRequest request) {
         return ResponseEntity.ok(userService.removeById(id));
     }
 

@@ -28,12 +28,14 @@ public class SpelTestController {
 
     @MySpelAnno(spelTwo = "#b EQ #c")
     @GetMapping("/test3")
-    public void test3(String b, String c) {}
+    public void test3(String b, String c) {
+    }
 
 
     @GetMapping("/test4")
     @MySpelAnno(spelThree = "{1,2,3}")
-    public void test4() {}
+    public void test4() {
+    }
 
 
     @GetMapping("/test5")

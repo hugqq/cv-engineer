@@ -19,14 +19,12 @@ import javax.sql.DataSource;
  * <p>
  * JPA配置类
  * </p>
- *
- *
- *
  */
 @Configuration
 @EnableTransactionManagement  // 开启事务支持
 @EnableJpaAuditing //利用jpa可以给MySQL列属性自动赋值,例如一些创建时间，修改时间
-@EnableJpaRepositories(basePackages = "com.hugqq.repository", transactionManagerRef = "jpaTransactionManager") // 事务管理工厂引用名称
+@EnableJpaRepositories(basePackages = "com.hugqq.repository", transactionManagerRef = "jpaTransactionManager")
+// 事务管理工厂引用名称
 public class JpaConfig {
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")

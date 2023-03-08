@@ -31,13 +31,13 @@ public class DeptController {
     @GetMapping("/dept/queryAll")
     public ResponseEntity queryAll() {
 
-        return ResponseEntity.ok( departmentDao.findAll());
+        return ResponseEntity.ok(departmentDao.findAll());
     }
 
 
     @GetMapping("/dept/queryByLevel")
     public ResponseEntity queryByLevel(Integer level) {
-        return ResponseEntity.ok( departmentDao.findDepartmentsByLevels(level));
+        return ResponseEntity.ok(departmentDao.findDepartmentsByLevels(level));
     }
 
 }

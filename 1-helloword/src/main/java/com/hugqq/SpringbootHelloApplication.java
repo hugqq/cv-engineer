@@ -13,9 +13,9 @@ public class SpringbootHelloApplication {
         SpringApplication.run(SpringbootHelloApplication.class, args);
     }
 
-        @RequestMapping("/")
-        public String initial() {
-            return "hello world";
-        }
+    @RequestMapping("/")
+    public String initial() {
+        return "hello world";
+    }
 
 }

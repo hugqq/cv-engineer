@@ -9,9 +9,6 @@ import java.lang.annotation.Target;
  * <p>
  * 表注解
  * </p>
- *
- *
- *
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})

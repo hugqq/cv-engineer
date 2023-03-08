@@ -10,16 +10,16 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
+
 /**
  * @author wulincheng
  * @Date 2020年6月23日18:25:22
- *  创建SQL连接工厂类
- * */
+ * 创建SQL连接工厂类
+ */
 @Configuration
 public class SqlSessionFactoryConfig {
     @javax.annotation.Resource
     DataSource dataSource;
-
 
 
     @Bean

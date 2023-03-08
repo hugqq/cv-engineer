@@ -21,7 +21,7 @@ public class ParWorker1 implements IWorker<String, String>, ICallback<String, St
         long start = System.currentTimeMillis();
         log.info("================入参：{}================", object);
         Thread.sleep(5000);
-        long end =System.currentTimeMillis();
+        long end = System.currentTimeMillis();
         log.info("================ParWorker1运行时长：{}================", end - start);
         return "parWorker1";
     }
@@ -39,9 +39,9 @@ public class ParWorker1 implements IWorker<String, String>, ICallback<String, St
     @Override
     public void result(boolean success, String param, WorkResult<String> workResult) {
         if (success) {
-            log.info("ParWorker1成功 参数是：{} 结果是：{}",param,workResult.getResult());
+            log.info("ParWorker1成功 参数是：{} 结果是：{}", param, workResult.getResult());
         } else {
-            log.info("ParWorker1失败 参数是：{} 结果是：{}",param,workResult.getResult());
+            log.info("ParWorker1失败 参数是：{} 结果是：{}", param, workResult.getResult());
         }
     }
 

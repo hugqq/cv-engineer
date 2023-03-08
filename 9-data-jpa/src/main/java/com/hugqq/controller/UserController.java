@@ -43,7 +43,7 @@ public class UserController {
         User user = User.builder().name(PersonInfoSource.getInstance().randomChineseName())
                 .password(SecureUtil.md5("123456" + salt)).salt(salt)
                 .email(InternetSource.getInstance().randomEmail(6, "hugqq.com"))
-                .phoneNumber( PersonInfoSource.getInstance().randomChineseMobile())
+                .phoneNumber(PersonInfoSource.getInstance().randomChineseMobile())
                 .status(1)
                 .lastLoginTime(new DateTime()).build();
         userDao.save(user);
@@ -95,7 +95,7 @@ public class UserController {
      * 测试分页排序查询
      */
     @RequestMapping("/queryPage")
-    public void queryPage(@RequestParam(defaultValue = "0") Integer currentPage,@RequestParam(defaultValue = "10") Integer pageSize) {
+    public void queryPage(@RequestParam(defaultValue = "0") Integer currentPage, @RequestParam(defaultValue = "10") Integer pageSize) {
         // JPA分页的时候起始页是页码减1
         Sort sort = Sort.by(Sort.Direction.DESC, "id");
         PageRequest pageRequest = PageRequest.of(currentPage, pageSize, sort);
@@ -114,11 +114,11 @@ public class UserController {
         for (int i = 0; i < 20; i++) {
             String salt = IdUtil.fastSimpleUUID();
             int index = 1 + i;
-            String email =(RandomStringUtils.randomAlphanumeric(5,8) + "@hugqq.com").toLowerCase();
+            String email = (RandomStringUtils.randomAlphanumeric(5, 8) + "@hugqq.com").toLowerCase();
             User user = User.builder().name(PersonInfoSource.getInstance().randomChineseName())
                     .password(SecureUtil.md5("123456" + salt)).salt(salt)
                     .email(email)
-                    .phoneNumber( PersonInfoSource.getInstance().randomChineseMobile())
+                    .phoneNumber(PersonInfoSource.getInstance().randomChineseMobile())
                     .status(1)
                     .lastLoginTime(new DateTime()).build();
             userList.add(user);

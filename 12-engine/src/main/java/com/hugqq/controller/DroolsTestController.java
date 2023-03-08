@@ -15,7 +15,7 @@ public class DroolsTestController {
     private KieSession kieSession;
 
     @GetMapping("drools/test")
-    public Person test(Person person){
+    public Person test(Person person) {
         kieSession.insert(person);
         int count = kieSession.fireAllRules();
         log.info("总执行了{}条规则", count);

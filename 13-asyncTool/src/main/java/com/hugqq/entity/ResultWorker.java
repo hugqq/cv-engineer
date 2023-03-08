@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+
 @Slf4j
 @Component
 public class ResultWorker implements IWorker<ResultVo, ResultVo>, ICallback<ResultVo, ResultVo> {

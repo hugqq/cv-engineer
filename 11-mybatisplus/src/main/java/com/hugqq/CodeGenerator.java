@@ -20,7 +20,6 @@ public class CodeGenerator {
     public static void main(String[] args) {
 
 
-
         DataSourceConfig dataSourceConfig = new DataSourceConfig.Builder("jdbc:mysql://127.0.0.1:3306/demo", "root", "root")
                 .dbQuery(new MySqlQuery())
                 .schema("demo")

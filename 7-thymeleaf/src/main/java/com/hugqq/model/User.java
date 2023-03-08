@@ -6,9 +6,6 @@ import lombok.Data;
  * <p>
  * 用户 model
  * </p>
- *
- *
- *
  */
 @Data
 public class User {

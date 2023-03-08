@@ -8,9 +8,6 @@ import java.util.List;
  * <p>
  * User Service
  * </p>
- *
- *
- *
  */
 public interface IUserService {
     /**

@@ -1,8 +1,8 @@
 package com.hugqq.controller;
 
+import com.hugqq.entity.*;
 import com.jd.platform.async.executor.Async;
 import com.jd.platform.async.wrapper.WorkerWrapper;
-import com.hugqq.entity.*;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

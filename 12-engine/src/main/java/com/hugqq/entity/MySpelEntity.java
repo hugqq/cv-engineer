@@ -17,6 +17,6 @@ public class MySpelEntity {
     private String desc;
 
 
-;
+    ;
 
 }

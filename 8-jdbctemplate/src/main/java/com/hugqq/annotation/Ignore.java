@@ -9,9 +9,6 @@ import java.lang.annotation.Target;
  * <p>
  * 需要忽略的字段
  * </p>
- *
- *
- *
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})

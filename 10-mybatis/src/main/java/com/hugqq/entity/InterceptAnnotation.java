@@ -7,11 +7,11 @@ import java.lang.annotation.Target;
 
 /**
  * 配合SqlInterceptor实现局部拦截
- * */
-@Target({ElementType.METHOD,ElementType.PARAMETER})
+ */
+@Target({ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface InterceptAnnotation {
-    boolean flag() default  true;
+    boolean flag() default true;
 
     int value() default 1;
 

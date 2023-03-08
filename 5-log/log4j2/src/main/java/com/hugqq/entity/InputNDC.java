@@ -21,9 +21,9 @@ public class InputNDC implements EnvironmentAware {
     }
 
     public static void putNdc() {
-      NDC.push("hostName="+NetUtil.getLocalHostName());
-            NDC.push("ip="+NetUtil.getLocalIp());
-            NDC.push("applicationName="+environment.getProperty("spring.application.name"));
+        NDC.push("hostName=" + NetUtil.getLocalHostName());
+        NDC.push("ip=" + NetUtil.getLocalIp());
+        NDC.push("applicationName=" + environment.getProperty("spring.application.name"));
 
     }
 

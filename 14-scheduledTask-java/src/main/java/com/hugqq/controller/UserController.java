@@ -14,19 +14,18 @@ public class UserController {
 
     @GetMapping("/user/testInsert")
     public void testInsert() {
-        User user1 = new User("张三",18);
-        User user2 = new User("李四",17);
+        User user1 = new User("张三", 18);
+        User user2 = new User("李四", 17);
         userService.insert(user1);
         userService.insertAsync(user2);
     }
 
     @GetMapping("/user/testInsertMultiple")
     public void testInsertMultiple() {
-        User user1 = new User("张三",18);
-        User user2 = new User("李四",17);
-        userService.insertMultiple(user1,user2);
+        User user1 = new User("张三", 18);
+        User user2 = new User("李四", 17);
+        userService.insertMultiple(user1, user2);
     }
-
 
 
 }

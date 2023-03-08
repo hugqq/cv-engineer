@@ -11,7 +11,8 @@ import com.hugqq.user.mapper.UserMapper;
 import com.hugqq.user.service.UserService;
 
 /**
- *  服务实现类
+ * 服务实现类
+ *
  * @author hugqq
  * @since 2023-02-25
  */
@@ -23,6 +24,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Autowired
     private UserMapper userMapper;
+
     @Override
     public void deletedAll() {
         userMapper.deleteAll();

@@ -2,16 +2,12 @@ package com.hugqq.task;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -20,12 +16,13 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @RestController
-public class TaskFactoryDemoController{
+public class TaskFactoryDemoController {
     @Autowired
     private TaskFactory task;
 
     /**
      * 测试异步任务 5s
+     *
      * @throws InterruptedException
      */
     @GetMapping("/asyncTaskTest")
@@ -46,6 +43,7 @@ public class TaskFactoryDemoController{
 
     /**
      * 测试同步任务 10s
+     *
      * @throws InterruptedException
      */
     @GetMapping("/taskTest")

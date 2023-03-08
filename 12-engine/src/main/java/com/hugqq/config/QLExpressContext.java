@@ -2,7 +2,6 @@ package com.hugqq.config;
 
 import com.ql.util.express.IExpressContext;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -26,9 +25,9 @@ public class QLExpressContext extends HashMap<String, Object> implements IExpres
         Object result;
         result = super.get(name);
         try {
-            if (result == null && this.context != null && this.context.containsBean((String)name)) {
+            if (result == null && this.context != null && this.context.containsBean((String) name)) {
                 // 如果在Spring容器中包含bean，则返回String的Bean
-                result = this.context.getBean((String)name);
+                result = this.context.getBean((String) name);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);

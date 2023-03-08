@@ -9,9 +9,6 @@ import java.lang.annotation.Target;
  * <p>
  * 主键注解
  * </p>
- *
- *
- *
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})

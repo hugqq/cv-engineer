@@ -1,7 +1,6 @@
 package com.hugqq.controller;
 
 import cn.hutool.core.lang.Dict;
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.hugqq.annos.Log;
 import com.hugqq.enums.LogType;
@@ -33,7 +32,7 @@ public class TestController {
     /**
      * 测试post json方法
      */
-    @Log(title = "查询",logType = LogType.SELECT)
+    @Log(title = "查询", logType = LogType.SELECT)
     @PostMapping("/testJson")
     public Dict testJson(@RequestBody Map<String, Object> map) {
         final String jsonStr = JSONUtil.toJsonStr(map);

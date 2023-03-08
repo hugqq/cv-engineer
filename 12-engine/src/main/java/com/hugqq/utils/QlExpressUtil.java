@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Component
 public class QlExpressUtil implements ApplicationContextAware {
-    private static ExpressRunner runner= new ExpressRunner();
+    private static ExpressRunner runner = new ExpressRunner();
 
 
     private ApplicationContext applicationContext;

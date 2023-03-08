@@ -29,32 +29,30 @@ public class SpringbootLogbackApplication {
         log.error("Spring boot启动初始化了 {} 个 Bean", length);
 
 //		// 自动选择日志实现
-		Log log = LogFactory.get();
-		log.info("This is {} log","default");
-		Console.log("----------------------------------------------------------------------");
+        Log log = LogFactory.get();
+        log.info("This is {} log", "default");
+        Console.log("----------------------------------------------------------------------");
 //		//自定义日志实现为Apache Commons Logging
-		LogFactory.setCurrentLogFactory(new ApacheCommonsLogFactory());
-		log.info("This is {} log","custom apache commons logging");
-		Console.log("----------------------------------------------------------------------");
+        LogFactory.setCurrentLogFactory(new ApacheCommonsLogFactory());
+        log.info("This is {} log", "custom apache commons logging");
+        Console.log("----------------------------------------------------------------------");
 //		//自定义日志实现为JDK Logging
-		LogFactory.setCurrentLogFactory(new JdkLogFactory());
-		log.info("This is {} log","custom jdk logging");
-		Console.log("----------------------------------------------------------------------");
+        LogFactory.setCurrentLogFactory(new JdkLogFactory());
+        log.info("This is {} log", "custom jdk logging");
+        Console.log("----------------------------------------------------------------------");
 //		//自定义日志实现为Console Logging
-		LogFactory.setCurrentLogFactory(new ConsoleLogFactory());
-		log.info("This is {} log","custom Console");
-		Console.log("----------------------------------------------------------------------");
+        LogFactory.setCurrentLogFactory(new ConsoleLogFactory());
+        log.info("This is {} log", "custom Console");
+        Console.log("----------------------------------------------------------------------");
         try {
             int i = 0;
             int j = 1 / i;
         } catch (Exception e) {
-            log.error("出错了{},{},{}","1","2","3");
+            log.error("出错了{},{},{}", "1", "2", "3");
 
         }
 
     }
-
-
 
 
 }

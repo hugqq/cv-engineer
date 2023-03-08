@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @PropertySource(value = "pro.properties")
 @ConfigurationProperties(prefix = "test")
-public class OtherProperties   {
+public class OtherProperties {
     private String name;
     private int age;
 }
