@@ -1,0 +1,63 @@
+spring:
+  profiles:
+    active: dev
+  h2:
+    console:
+      enabled: true
+  datasource:
+    default:
+      #  http://localhost:8080/h2-console
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:elasticjob
+      username: sa
+      password:
+elasticjob:
+  tracing:
+    type: RDB
+  regCenter:
+    serverLists: 127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183
+    namespace: elasticjob-test
+  jobs:
+    simpleJob:
+      elasticJobClass: com.hugqq.job.MySimpleJob
+      timeZone: GMT+08:00
+      cron: 0 0/1 * * * ?
+      shardingTotalCount: 3
+      shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+    dataflowJob:
+        elasticJobClass: com.hugqq.job.MyDataflowJob
+        timeZone: GMT+08:00
+        cron: 0 0/1 * * * ?
+        shardingTotalCount: 3
+        shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+    scriptJob:
+      elasticJobType: SCRIPT
+      cron: 0 0/1 * * * ?
+      shardingTotalCount: 3
+      props:
+        script.command.line: "echo SCRIPT JOB: "
+    occurErrorNoticeEmailJob:
+      elasticJobClass: com.hugqq.job.MyOccurErrorNoticeEmailJob
+      overwrite: true
+      shardingTotalCount: 3
+      shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+      jobErrorHandlerType: EMAIL
+      jobBootstrapBeanName: MyOccurErrorNoticeEmailJob
+      props:
+        email:
+          host: smtp.qq.com
+          port: 465
+          username: 987557921@qq.com
+          password: onpshrvkygrlbdbj
+          useSsl: true
+          subject: ElasticJob error message
+          from: 987557921@qq.com
+          to: 330479321@@qq.com
+          debug: false
+  dump:
+    port: 9888
+
+logging:
+  level:
+    org.quartz: error
+    org.apache.shardingsphere: error
