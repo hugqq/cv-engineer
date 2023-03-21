@@ -12,15 +12,13 @@ import com.hugqq.service.FileInfoService;
 import com.hugqq.util.FileInfoUtils;
 import com.hugqq.util.ServletUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -41,13 +39,11 @@ public class FileController {
     @Value("${prop.upload-folder}")
     private String uploadFolder;
 
-    @Resource
+    @Autowired
     private FileInfoService fileInfoService;
 
-    @Resource
+    @Autowired
     private ChunkService chunkService;
-
-    private final Logger logger = LoggerFactory.getLogger(FileController.class);
 
     /**
      * 上传文件块
@@ -55,7 +51,6 @@ public class FileController {
     @PostMapping("/chunk")
     public String uploadChunk(ChunkInfo chunk) {
         MultipartFile file = chunk.getUploadFile();
-        logger.info("file originName: {}, chunkNumber: {}", file.getOriginalFilename(), chunk.getChunkNumber());
         try {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(FileInfoUtils.generatePath(uploadFolder, chunk));
@@ -83,7 +78,7 @@ public class FileController {
             uploadResult.setSkipUpload(true);
             uploadResult.setLocation(file);
             response.setStatus(HttpServletResponse.SC_OK);
-            uploadResult.setMessage("完整文件已存在，直接跳过上传，实现秒传");
+            uploadResult.setMessage("秒传功能");
             return uploadResult;
         }
         //如果完整文件不存在，则去数据库判断当前哪些文件块已经上传过了，把结果告诉前端，跳过这些文件块的上传，实现断点续传
@@ -92,15 +87,14 @@ public class FileController {
             uploadResult.setSkipUpload(false);
             uploadResult.setUploadedChunks(list);
             response.setStatus(HttpServletResponse.SC_OK);
-            uploadResult.setMessage("部分文件块已存在，继续上传剩余文件块，实现断点续传");
+            uploadResult.setMessage("断点续传");
             return uploadResult;
         }
         return uploadResult;
     }
 
     @PostMapping("/mergeFile")
-    public String mergeFile(@RequestBody FileInfoVO fileInfoVO) {
-        String result = "FAILURE";
+    public ResponseEntity mergeFile(@RequestBody FileInfoVO fileInfoVO) {
         FileInfo fileInfo = new FileInfo();
         fileInfo.setId(String.valueOf(IdUtil.getSnowflakeNextId()));
         fileInfo.setFilename(fileInfoVO.getName());
@@ -118,13 +112,17 @@ public class FileController {
         //文件合并成功后，保存记录至数据库
         if ("200".equals(fileSuccess)) {
             if (fileInfoService.save(fileInfo)) {
-                return "SUCCESS";
+                return ResponseEntity.status(HttpStatus.OK).body("200");
             }
         }
         if ("500".equals(fileSuccess)) {
-            fileInfoService.saveOrUpdate(fileInfo, new QueryWrapper<FileInfo>().eq("ref_project_id", fileInfo.getRefProjectId()));
+            fileInfoService.saveOrUpdate(fileInfo, new LambdaQueryWrapper<FileInfo>()
+                    .eq(FileInfo::getId, fileInfo.getId())
+                    .eq(FileInfo::getRefProjectId, fileInfo.getRefProjectId())
+            );
+            return ResponseEntity.status(HttpStatus.OK).body("200");
         }
-        return result;
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("500");
     }
 
     /**
@@ -135,7 +133,7 @@ public class FileController {
         LambdaQueryWrapper<FileInfo> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.like(StrUtil.isNotEmpty(query.getNameSearch()), FileInfo::getFilename, query.getNameSearch());
         Page<FileInfo> page = fileInfoService.page(new Page<>(query.getPageIndex(), query.getPageSize()), queryWrapper);
-        page.getRecords().forEach(e->e.setUploadTimeString(DateUtil.format(e.getUploadTime(),"yyyy-MM-dd HH:mm:ss")));
+        page.getRecords().forEach(record -> record.setUploadTimeString(DateUtil.format(record.getUploadTime(), "yyyy-MM-dd HH:mm:ss")));
         return ResponseEntity.ok(page);
     }
 

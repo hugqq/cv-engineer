@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hugqq</groupId>
-    <artifactId>upload</artifactId>
+    <artifactId>18-upload</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>18-upload</name>
     <description>18-upload</description>

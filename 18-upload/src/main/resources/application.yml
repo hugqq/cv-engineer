@@ -58,4 +58,4 @@ mybatis-plus:
     cache-enabled: false
 # 上传文件存储路径
 prop:
-  upload-folder: C:/temp
+  upload-folder: C:\temp
