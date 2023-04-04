@@ -34,9 +34,8 @@ public class TestController {
      */
     @Log(title = "查询", logType = LogType.SELECT)
     @PostMapping("/testJson")
-    public Dict testJson(@RequestBody Map<String, Object> map) {
+    public Dict testJson(Map<String, Object> map) {
         final String jsonStr = JSONUtil.toJsonStr(map);
-        log.info(jsonStr);
         return Dict.create().set("json", map);
     }
 }

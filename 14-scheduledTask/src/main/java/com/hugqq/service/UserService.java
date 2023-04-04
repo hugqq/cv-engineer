@@ -73,6 +73,7 @@ public class UserService {
         CompletableFuture.runAsync(() -> {
             insert(user1);
         });
+
         CompletableFuture.runAsync(() -> {
             userService2.insert(user1);
         });

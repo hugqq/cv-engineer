@@ -6,13 +6,16 @@ import com.google.common.collect.Maps;
 import com.hugqq.annos.Log;
 import com.hugqq.entity.LogBO;
 import com.hugqq.utils.IpUtils;
+import com.hugqq.utils.RedisAutoConfigUtil;
 import eu.bitwalker.useragentutils.UserAgent;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -30,6 +33,17 @@ import java.util.Objects;
 @Component
 @Slf4j
 public class LogAspect {
+
+
+    @Before(value = "@annotation(methodAnnotationALog)")
+    public void doBefore(JoinPoint joinPoint, Log methodAnnotationALog) {
+        // 开始打印请求日志
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        String params = RedisAutoConfigUtil.getParams(request);
+        log.info("请求参数:{}", params);
+
+
+    }
 
     @SneakyThrows
     @Around(value = "@annotation(methodAnnotationALog)")

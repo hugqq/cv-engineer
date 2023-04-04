@@ -32,8 +32,8 @@ import java.util.stream.Stream;
 public class BaseDao<T, P> {
 
 
-    private JdbcTemplate jdbcTemplate;
-    private Class<T> clazz;
+    private final JdbcTemplate jdbcTemplate;
+    private final Class<T> clazz;
 
     @SuppressWarnings(value = "unchecked")
     public BaseDao(JdbcTemplate jdbcTemplate) {

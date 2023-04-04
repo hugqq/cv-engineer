@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hugqq</groupId>
-    <artifactId>xxljob</artifactId>
+    <artifactId>16-xxljob</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>16-xxljob</name>
     <description>16-xxljob</description>

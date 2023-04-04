@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hugqq.user.mapper.ThirdPartyEvaluationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hugqq.user.entity.ThirdPartyEvaluation">
+        <result column="id" property="id"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="point_id" property="pointId"/>
+        <result column="point_name" property="pointName"/>
+        <result column="longitude" property="longitude"/>
+        <result column="latitude" property="latitude"/>
+        <result column="area_id" property="areaId"/>
+        <result column="street_id" property="streetId"/>
+        <result column="address" property="address"/>
+        <result column="back_time" property="backTime"/>
+        <result column="status" property="status"/>
+        <result column="org_id" property="orgId"/>
+        <result column="pro_type_id" property="proTypeId"/>
+        <result column="pro_description" property="proDescription"/>
+        <result column="pro_urls" property="proUrls"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="remarks" property="remarks"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_date" property="updateDate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_by,
+        update_by,
+        point_id, point_name, longitude, latitude, area_id, street_id, address, back_time, `status`, org_id, pro_type_id, pro_description, pro_urls, del_flag, remarks, create_date, update_date
+    </sql>
+
+</mapper>
