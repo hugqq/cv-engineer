@@ -6,6 +6,7 @@
   <a href="https://docs.spring.io/spring-boot/docs/2.7.9/reference/html/"><img alt="Spring Boot" src="https://img.shields.io/badge/Spring Boot-2.7.9.RELEASE-brightgreen.svg"/></a>
   <a href="https://github.com/hugqq/cv-engineer/blob/main/LICENSE"><img alt="LICENSE" src="https://img.shields.io/github/license/hugqq/cv-engineer.svg"/></a>
 </p>
+
 ## 项目简介
 
 立志做一名优秀的Java CV工程师
