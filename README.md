@@ -17,7 +17,7 @@
 - **Maven 3.8 +**
 - **IntelliJ IDEA  2023.1 +**
 - **Mysql 5.7 +**
-- **Nodejs 14.9.0+ **
+- **Nodejs 14.9.0+**
 - **Docker desktop**
 
 ## 模块简介
