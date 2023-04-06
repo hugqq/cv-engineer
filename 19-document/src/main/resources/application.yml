@@ -1,0 +1,14 @@
+knife4j:
+  enable: true
+  setting:
+    language: zh-CN
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: My Footer
+    enableSwaggerModels: true
+    swaggerModelName: My Models
+# Spring Boot 2.6 ????swagger????????
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
