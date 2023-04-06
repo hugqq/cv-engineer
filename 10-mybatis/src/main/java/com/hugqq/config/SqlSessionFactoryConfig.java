@@ -12,8 +12,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import javax.sql.DataSource;
 
 /**
- * @author wulincheng
- * @Date 2020年6月23日18:25:22
+ * @author hugqq
  * 创建SQL连接工厂类
  */
 @Configuration

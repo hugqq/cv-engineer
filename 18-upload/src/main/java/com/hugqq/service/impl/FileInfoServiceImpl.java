@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * 文件处理类
- * @author 洋葱骑士
+ * @author hugqq
  *
  */
 @Service
