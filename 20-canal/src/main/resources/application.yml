@@ -1,0 +1,25 @@
+server:
+  port: 8888
+# ???
+spring:
+  application:
+    name: canal-server
+  datasource:
+    url: jdbc:mysql://192.168.1.11:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: Aa123456789+
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      minimum-idle: 4
+      maximum-pool-size: 16
+      connection-timeout: 10000
+      idle-timeout: 30000
+      connection-init-sql: set names utf8mb4
+
+db:
+  ip: 192.168.1.11  # canal?????
+canal:
+  name: example
+
+tables: canal.test # ???????
+

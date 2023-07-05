@@ -30,7 +30,7 @@ spring:
 logging:
   level:
     com.hugqq: debug
-    com.hugqq.task.quartz.mapper: trace
+#    org.quartz: debug
 mybatis:
   configuration:
     # 下划线转驼峰
