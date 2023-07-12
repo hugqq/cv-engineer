@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hugqq</groupId>
-    <artifactId>canal</artifactId>
+    <artifactId>20-canal</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>20-canal</name>
     <description>20-canal</description>
